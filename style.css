@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Başlık ve diğer belirgin metinler için font tanımı */
+h1, h2, h3, .role-text {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Başlık fontunun daha güçlü görünmesi için kalınlık ayarı */
+.role-text {
+    font-weight: 700; /* Kalın */
+    text-transform: uppercase;
+}
+/* Temel sayfa ve container stilleri */
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    perspective: 1500px;
+}
+
+/* Ana görsel stilleri */
+.main-image-container {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    transform-style: preserve-3d;
+    transform: rotateX(35deg); /* Başlangıç 3D eğim efekti */
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Kartların genel stilleri */
+.cards-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    width: 150px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.card-content {
+    text-align: center;
+}
+
+.role-text {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+/* Dinamik İfadeler (Fare üzerine geldiğinde görünür) */
+.dynamic-cursor {
+    position: absolute;
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none; /* Etkileşim engelleme */
+}
+/* Her bir kartın üzerine gelindiğinde küçük bir dönüş ve parlama efekti */
+.card:hover {
+    transform: translateY(-10px) rotate(3deg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* Kartların daha belirgin görünmesi için geçiş efekti */
+.card-full-stack {
+    background-color: #f6f8fb;
+    transform: rotate(-5deg);
+}
+
+.card-financial-analyst {
+    background-color: #f6f8fb;
+    transform: rotate(3deg);
+}
+/* Diğer kartlar için de benzer stiller eklenebilir. */
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 40px auto;
+    width: 60%;
+    position: relative;
+    overflow: visible; /* pseudo-element görünür kalmasını sağlar */
+}
+
+
+
+.subtitle-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .static-text {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .rotating-badge {
+    position: relative;
+    height: 32px;
+    width: 140px; /* kelimelerin sığacağı kadar genişlik */
+    overflow: hidden;
+    border-radius: 8px;
+    padding: 0 12px;
+    background-color: #f6f8fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .word {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 100%); /* başlangıçta kutunun altında */
+    opacity: 0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 32px;
+    white-space: nowrap;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(90deg, #2ed1a6 0%, #207af9 50.2%, #2ed1a6 100%);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  
+  .word.active {
+    transform: translate(-50%, 0); /* kutunun ortasına kaydır */
+    opacity: 1;
+  }
